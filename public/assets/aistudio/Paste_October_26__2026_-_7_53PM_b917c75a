@@ -1,0 +1,1006 @@
+# PROJECT: NearMart 3D — Interactive Virtual Supermarket & Local Grocery Marketplace
+
+Act as a senior full-stack software engineer, 3D web developer, UI/UX designer, and database architect.
+
+Build a complete, modern, responsive, full-stack web application named **NearMart 3D**. This is a college final-year project designed to transform traditional grocery shopping into an interactive virtual supermarket experience while connecting customers with nearby physical supermarkets.
+
+The website must work on desktop, laptop, tablet, and mobile browsers.
+
+Do not build only a static landing page or a UI prototype. Build a functional application with frontend, backend APIs, database integration, authentication, shopping cart, inventory management, order processing, and an interactive 3D supermarket.
+
+If a feature requires external credentials or a paid service, provide a working demo mode and clearly document how to configure the real integration.
+
+# 1. PROJECT OBJECTIVE
+
+Create a platform where customers can:
+
+1. Register and log in.
+2. Discover supermarkets near their location.
+3. Select a supermarket and view its available products.
+4. Enter an interactive 3D virtual supermarket.
+5. Walk through aisles and explore product shelves.
+6. Click products to view details, prices, images, and availability.
+7. Add products to their shopping cart.
+8. Place grocery orders from a selected supermarket.
+9. Choose home delivery or pickup when supported.
+10. Track order status.
+11. View their order history.
+
+Supermarket owners must be able to manage their stores, products, prices, stock quantities, and customer orders.
+
+Administrators must be able to manage customers, supermarkets, products, and platform activity.
+
+# 2. TECHNOLOGY STACK
+
+Frontend:
+
+* HTML5
+* CSS3
+* JavaScript
+* React with Vite
+* React Router
+* Three.js for 3D rendering
+* React Three Fiber and Drei if compatible with the selected React version
+* Tailwind CSS for responsive styling
+* Axios for API requests
+
+Backend:
+
+* Java
+* Spring Boot
+* Spring Web
+* Spring Data JPA
+* Spring Security
+* JWT-based authentication
+* Bean Validation
+* Maven
+
+Database:
+
+* MySQL
+
+Additional tools:
+
+* Git and GitHub
+* REST APIs
+* IntelliJ IDEA for backend development
+* Visual Studio Code for frontend development
+* Postman for API testing
+
+Use stable, compatible dependency versions. Do not mix incompatible library versions.
+
+# 3. WEBSITE DESIGN AND BRAND IDENTITY
+
+Create a premium, modern grocery-shopping interface.
+
+Brand name: NearMart 3D
+
+Tagline: "Step Inside. Shop Smarter."
+
+Design requirements:
+
+* Clean and professional interface.
+* Grocery-inspired green and white color palette with subtle orange accents.
+* Rounded cards and buttons.
+* Soft shadows and smooth animations.
+* High-quality product images.
+* Clear typography and good spacing.
+* Attractive hero section with a virtual supermarket preview.
+* Responsive navigation.
+* Loading indicators and meaningful empty states.
+* Toast notifications for successful and failed actions.
+* Accessible forms and keyboard navigation.
+* Consistent design across all pages.
+* Avoid excessive gradients, unnecessary animations, and cluttered layouts.
+
+The website should look like a real grocery-shopping platform, not a basic college assignment template.
+
+# 4. CUSTOMER-FACING PAGES
+
+## A. Home Page
+
+Create an attractive homepage containing:
+
+* NearMart 3D logo and navigation bar.
+* Search bar for products and supermarkets.
+* Location selector.
+* Sign in and register buttons.
+* Hero section introducing 3D supermarket shopping.
+* "Explore Virtual Store" primary button.
+* "Find Nearby Stores" secondary button.
+* Featured supermarkets.
+* Popular grocery products.
+* Product categories.
+* Special offers and discounts.
+* How it works section.
+* Benefits of virtual shopping.
+* Customer testimonials using clearly identified sample/demo content.
+* Footer with contact, about, privacy, and terms sections.
+
+The homepage must have functional navigation and real interactions with the backend wherever applicable.
+
+## B. Registration and Login
+
+Implement customer registration and login.
+
+Registration fields:
+
+* Full name
+* Email
+* Phone number
+* Password
+* Confirm password
+* Optional delivery address
+
+Requirements:
+
+* Validate all input fields.
+* Check for duplicate email addresses.
+* Hash passwords securely using Spring Security.
+* Never store plain-text passwords.
+* Implement JWT authentication.
+* Protect authenticated routes.
+* Provide logout functionality.
+* Display useful validation and error messages.
+
+Use role-based access for CUSTOMER, SHOP_OWNER, and ADMIN.
+
+Do not allow users to grant themselves administrator privileges through public registration.
+
+## C. Nearby Supermarkets
+
+Build a page that displays supermarkets in a card-based layout.
+
+Each supermarket card should show:
+
+* Store name
+* Store image
+* Address or locality
+* Distance when reliable location data is available
+* Opening hours
+* Available delivery and pickup options
+* Minimum order amount if applicable
+* Store status
+* "View Store" button
+* "Enter 3D Store" button
+
+Features:
+
+* Search by supermarket name.
+* Filter by locality.
+* Sort by distance when coordinates are available.
+* Filter by delivery availability.
+* Display a friendly message if no stores are found.
+
+Allow customers to manually select their location if browser location access is denied.
+
+For the college demonstration, seed the database with sample supermarkets from a configurable demo locality.
+
+Do not claim that sample locations, distances, opening hours, or inventory represent live real-world data.
+
+## D. Supermarket Product Catalogue
+
+After selecting a supermarket, display products belonging to that store.
+
+Categories:
+
+* Fruits
+* Vegetables
+* Dairy Products
+* Bakery
+* Rice and Grains
+* Snacks
+* Beverages
+* Personal Care
+* Household Essentials
+* Frozen Foods
+
+Each product card should display:
+
+* Product image
+* Product name
+* Brand, where applicable
+* Quantity or package size
+* Price
+* Original price and discount, when applicable
+* Stock availability
+* Quantity selector
+* Add to Cart button
+* View Details button
+
+Features:
+
+* Search products.
+* Filter by category.
+* Filter by price range.
+* Sort by price or product name.
+* Show out-of-stock products as unavailable.
+* Prevent customers from ordering more than available stock.
+* Display the selected supermarket's actual stored price.
+
+The database must support store-specific pricing and inventory.
+
+## E. Interactive 3D Virtual Supermarket
+
+This is the main highlight of NearMart 3D.
+
+Build an interactive 3D supermarket using Three.js or React Three Fiber.
+
+Create a navigable virtual supermarket containing:
+
+* Entrance area
+* Checkout counter
+* Multiple aisles
+* Shelves and racks
+* Product display areas
+* Category signs
+* Floor and ceiling
+* Lighting
+* Store navigation markers
+* Product interaction points
+
+The 3D environment must look like a supermarket rather than a flat webpage with a 3D object.
+
+### Desktop controls
+
+* W, A, S, D or arrow keys to move.
+* Mouse to look around.
+* Click a product to open its information panel.
+* Escape to release mouse controls when pointer lock is used.
+* Provide clear instructions before entering the 3D environment.
+
+### Mobile controls
+
+* Touch-based virtual joystick or equivalent on-screen movement controls.
+* Touch-drag to look around.
+* Tap products to open product details.
+* Touch-friendly buttons.
+* A visible exit button.
+* Avoid controls that block the entire screen.
+
+### Product interaction
+
+When a user clicks or taps a product:
+
+* Highlight the selected product.
+* Show product name and image.
+* Display price and package size.
+* Display availability.
+* Show an Add to Cart button.
+* Allow the user to view complete product details.
+
+Every 3D product interaction must use a real product ID from the database or a clearly labelled demo product mapping.
+
+### 3D usability
+
+* Add a minimap or aisle navigation panel.
+* Allow users to jump to product categories.
+* Display aisle names.
+* Provide a way to return to the normal product catalogue.
+* Add a fallback catalogue if 3D rendering fails.
+* Optimize models, textures, and lighting for mobile devices.
+* Avoid unnecessarily large 3D assets.
+* Show a loading screen while the environment loads.
+* Handle WebGL errors gracefully.
+
+Do not attempt to reproduce copyrighted supermarket branding or assets without permission.
+
+## F. Product Details Page
+
+Display:
+
+* Product image gallery
+* Name and description
+* Brand and package size
+* Price
+* Discount, if applicable
+* Availability
+* Selected supermarket
+* Quantity selector
+* Add to Cart button
+* Related products
+
+Use the selected store's inventory as the source of truth.
+
+## G. Shopping Cart
+
+Create a functional shopping cart.
+
+Features:
+
+* Add products.
+* Increase or decrease quantity.
+* Remove products.
+* Display product images and prices.
+* Calculate subtotal.
+* Calculate discounts when valid.
+* Calculate delivery fees according to configured rules.
+* Display the final estimated amount.
+* Proceed to checkout.
+
+Important business rules:
+
+* Each cart must be associated with the customer.
+* For the initial version, allow items from only one supermarket per order.
+* If the customer attempts to add an item from another store, explain that they must check out first or clear the current cart.
+* Revalidate product prices and stock before checkout.
+* Never rely on frontend calculations for the final payable amount.
+
+Persist the cart in the backend for logged-in users.
+
+## H. Checkout and Order Placement
+
+Create a complete checkout page.
+
+Collect:
+
+* Customer name
+* Contact number
+* Delivery address
+* Delivery instructions
+* Delivery or pickup preference
+* Payment method
+
+Payment options:
+
+* Cash on Delivery, if enabled by the store.
+* Online payment through a properly configured payment gateway.
+* Demo payment mode for college presentations.
+
+Requirements:
+
+* Validate addresses and contact information.
+* Verify current product prices.
+* Verify available stock.
+* Calculate the final order amount on the backend.
+* Create an order with an order number.
+* Reduce stock safely after successful order placement.
+* Prevent duplicate orders from repeated requests.
+* Store order items and their purchase-time prices.
+* Display an order confirmation page.
+
+For online payments, use a supported payment gateway such as Razorpay only after the merchant account and credentials are configured.
+
+Never collect or store card numbers, CVVs, UPI PINs, or payment passwords directly.
+
+Do not mark an order as paid merely because the frontend reports success. Verify payment results using trusted server-side verification and gateway webhooks.
+
+Clearly label demo payments as simulated payments. Do not present simulated payments as real transactions.
+
+## I. Order Tracking
+
+Create a customer order-history page.
+
+Each order should show:
+
+* Order number
+* Store name
+* Order date
+* Purchased products
+* Quantities
+* Total amount
+* Payment status
+* Fulfilment method
+* Current order status
+
+Order statuses:
+
+* PLACED
+* CONFIRMED
+* PACKING
+* READY_FOR_PICKUP
+* OUT_FOR_DELIVERY
+* DELIVERED
+* CANCELLED
+
+Only allow valid status transitions.
+
+Customers should be able to view a status timeline.
+
+Allow cancellation only when the order is in a permitted state. Restore inventory appropriately when a cancellation is confirmed.
+
+Do not claim GPS-based live delivery tracking unless a real tracking integration has been implemented.
+
+# 5. SHOP OWNER DASHBOARD
+
+Create a separate dashboard for SHOP_OWNER accounts.
+
+Dashboard overview:
+
+* Total orders
+* Today's orders
+* Total listed products
+* Low-stock products
+* Recent orders
+* Sales summary based on recorded orders
+
+Product management:
+
+* Add a product.
+* Edit product details.
+* Upload or select product images.
+* Set price.
+* Set discount.
+* Set available stock.
+* Set category.
+* Set package size.
+* Mark a product unavailable.
+* Delete or deactivate a product.
+
+Inventory management:
+
+* Update stock quantity.
+* Display low-stock warnings.
+* Display out-of-stock products.
+* Maintain store-specific prices and stock.
+* Record inventory updates where practical.
+
+Order management:
+
+* View orders for the owner's store.
+* View order details.
+* Confirm orders.
+* Update fulfilment status through valid transitions.
+* View customer delivery instructions when needed.
+
+Security:
+
+* A shop owner must only manage stores assigned to that account.
+* Never allow one shop owner to modify another shop's products or orders.
+* Enforce permissions in the backend, not only in the frontend.
+
+# 6. ADMIN DASHBOARD
+
+Create an administrator dashboard with:
+
+* Total customers
+* Total supermarkets
+* Total products
+* Total orders
+* Order status overview
+* Recent activity
+
+Admin functions:
+
+* View and manage customer accounts.
+* Create and manage supermarket records.
+* Assign owners to supermarkets.
+* Activate or deactivate stores.
+* Manage product categories.
+* View and manage platform orders.
+* View inventory and stock alerts.
+* Manage basic platform settings.
+
+Use pagination, search, validation, and confirmation dialogs for destructive actions.
+
+Never expose sensitive customer data unnecessarily.
+
+# 7. DATABASE DESIGN
+
+Design a normalized MySQL database using JPA entities, relationships, constraints, and appropriate indexes.
+
+Include the following entities:
+
+1. User
+
+   * id
+   * fullName
+   * email
+   * phone
+   * passwordHash
+   * role
+   * enabled
+   * createdAt
+
+2. Address
+
+   * id
+   * userId
+   * addressLine
+   * locality
+   * city
+   * state
+   * postalCode
+   * latitude
+   * longitude
+
+3. Supermarket
+
+   * id
+   * name
+   * description
+   * address
+   * locality
+   * city
+   * latitude
+   * longitude
+   * openingHours
+   * deliveryAvailable
+   * pickupAvailable
+   * active
+
+4. StoreOwnerAssignment
+
+   * id
+   * userId
+   * supermarketId
+
+5. Category
+
+   * id
+   * name
+   * description
+   * imageUrl
+   * active
+
+6. Product
+
+   * id
+   * name
+   * brand
+   * description
+   * packageSize
+   * imageUrl
+   * categoryId
+   * active
+
+7. StoreInventory
+
+   * id
+   * supermarketId
+   * productId
+   * price
+   * discountPercentage
+   * stockQuantity
+   * lowStockThreshold
+   * available
+
+8. Cart
+
+   * id
+   * userId
+   * supermarketId
+   * updatedAt
+
+9. CartItem
+
+   * id
+   * cartId
+   * productId
+   * quantity
+
+10. CustomerOrder
+
+    * id
+    * orderNumber
+    * userId
+    * supermarketId
+    * deliveryAddressId
+    * subtotal
+    * discountAmount
+    * deliveryFee
+    * totalAmount
+    * paymentMethod
+    * paymentStatus
+    * orderStatus
+    * fulfilmentMethod
+    * createdAt
+    * updatedAt
+
+11. OrderItem
+
+    * id
+    * orderId
+    * productId
+    * productNameSnapshot
+    * unitPriceSnapshot
+    * quantity
+    * lineTotal
+
+12. Payment
+
+    * id
+    * orderId
+    * provider
+    * providerReference
+    * amount
+    * status
+    * createdAt
+
+13. InventoryTransaction
+
+    * id
+    * supermarketId
+    * productId
+    * quantityChange
+    * reason
+    * createdAt
+
+14. OrderStatusHistory
+
+    * id
+    * orderId
+    * previousStatus
+    * newStatus
+    * changedBy
+    * createdAt
+
+Use BigDecimal for money. Use proper foreign keys, unique constraints, and transaction management.
+
+Prevent negative inventory and duplicate product entries for the same store.
+
+Use database transactions and appropriate locking or atomic updates when placing orders to prevent overselling.
+
+Do not store derived values redundantly unless there is a clear reason.
+
+# 8. BACKEND REST API
+
+Create documented REST APIs.
+
+Authentication:
+
+* POST /api/auth/register
+* POST /api/auth/login
+* GET /api/auth/me
+
+Supermarkets:
+
+* GET /api/stores
+* GET /api/stores/{storeId}
+* GET /api/stores/nearby
+* POST /api/owner/stores
+* PUT /api/owner/stores/{storeId}
+
+Categories:
+
+* GET /api/categories
+* POST /api/admin/categories
+
+Products:
+
+* GET /api/products
+* GET /api/products/{productId}
+* GET /api/stores/{storeId}/products
+* POST /api/owner/stores/{storeId}/products
+* PUT /api/owner/stores/{storeId}/products/{productId}
+* DELETE /api/owner/stores/{storeId}/products/{productId}
+
+Inventory:
+
+* GET /api/owner/stores/{storeId}/inventory
+* PATCH /api/owner/stores/{storeId}/inventory/{inventoryId}
+
+Cart:
+
+* GET /api/cart
+* POST /api/cart/items
+* PATCH /api/cart/items/{itemId}
+* DELETE /api/cart/items/{itemId}
+* DELETE /api/cart
+
+Checkout and orders:
+
+* POST /api/checkout
+* GET /api/orders
+* GET /api/orders/{orderId}
+* POST /api/orders/{orderId}/cancel
+* GET /api/owner/stores/{storeId}/orders
+* PATCH /api/owner/orders/{orderId}/status
+
+Admin:
+
+* GET /api/admin/dashboard
+* GET /api/admin/users
+* GET /api/admin/stores
+* GET /api/admin/orders
+
+Payment:
+
+* POST /api/payments/create
+* POST /api/payments/verify
+* POST /api/payments/webhook
+
+Implement appropriate request and response DTOs.
+
+Use consistent JSON responses, validation, meaningful HTTP status codes, and centralized exception handling.
+
+Do not expose JPA entities directly when DTOs are more appropriate.
+
+Protect each endpoint using Spring Security and role-based authorization.
+
+The API list is a starting specification. Add any necessary endpoints to make the application work correctly.
+
+# 9. FRONTEND ARCHITECTURE
+
+Organize the React application into reusable components and pages.
+
+Suggested structure:
+
+frontend/
+src/
+components/
+Navbar.jsx
+Footer.jsx
+ProductCard.jsx
+StoreCard.jsx
+SearchBar.jsx
+CategoryCard.jsx
+CartItem.jsx
+ProtectedRoute.jsx
+LoadingSpinner.jsx
+ErrorMessage.jsx
+pages/
+Home.jsx
+Login.jsx
+Register.jsx
+Stores.jsx
+StoreDetails.jsx
+Products.jsx
+ProductDetails.jsx
+VirtualStore.jsx
+Cart.jsx
+Checkout.jsx
+OrderConfirmation.jsx
+Orders.jsx
+OrderDetails.jsx
+CustomerProfile.jsx
+OwnerDashboard.jsx
+OwnerProducts.jsx
+OwnerInventory.jsx
+OwnerOrders.jsx
+AdminDashboard.jsx
+AdminStores.jsx
+AdminUsers.jsx
+NotFound.jsx
+services/
+api.js
+authService.js
+storeService.js
+productService.js
+cartService.js
+orderService.js
+context/
+AuthContext.jsx
+CartContext.jsx
+three/
+SupermarketScene.jsx
+PlayerController.jsx
+ProductInteraction.jsx
+AisleNavigation.jsx
+App.jsx
+main.jsx
+
+You may adjust the structure if a better architecture is needed.
+
+Use environment variables for API base URLs.
+
+Handle loading states, empty results, API failures, and expired sessions.
+
+Never hardcode real secrets or payment credentials into frontend code.
+
+# 10. RESPONSIVE MOBILE DESIGN
+
+The entire application must be responsive.
+
+Desktop:
+
+* Full navigation bar.
+* Multi-column product grid.
+* Large interactive 3D scene.
+* Keyboard and mouse controls.
+
+Tablet:
+
+* Responsive product grid.
+* Touch-compatible navigation.
+* Scaled 3D environment.
+
+Mobile:
+
+* Mobile navigation or bottom navigation.
+* Single-column or two-column product layout as appropriate.
+* Touch-friendly buttons.
+* Mobile-optimized checkout.
+* Compact cart summary.
+* Touch-based 3D movement controls.
+* Ability to switch to the normal product list whenever the 3D environment is inconvenient.
+
+The 3D experience must not prevent users from completing a purchase on low-performance phones.
+
+# 11. SAMPLE DATA AND DEMO MODE
+
+Provide realistic, clearly labelled sample data for the college demonstration.
+
+Include:
+
+* At least 3 sample supermarkets.
+* At least 10 product categories.
+* At least 40 sample grocery products.
+* Different prices and stock quantities across stores.
+* Sample discounts.
+* Several sample orders with different statuses.
+
+Create a database seed script or Spring Boot data initializer.
+
+Provide instructions for creating demo accounts for:
+
+* Customer
+* Shop owner
+* Administrator
+
+Never use publicly known default passwords in production.
+
+Make demo credentials configurable and ensure they are not silently enabled in production.
+
+Use sample images from appropriate image sources or locally stored assets. Do not invent real product stock or claim sample data is live inventory.
+
+# 12. SECURITY AND RELIABILITY
+
+Implement:
+
+* Secure password hashing.
+* JWT authentication and authorization.
+* Role-based access control.
+* Input validation.
+* Backend ownership checks.
+* CORS configuration.
+* Safe error handling.
+* Transactional checkout.
+* Stock validation.
+* Server-side price calculation.
+* Protection against duplicate orders.
+* Secure payment verification.
+* Externalized secrets.
+* Environment-based configuration.
+
+Do not expose stack traces, passwords, secret keys, or sensitive customer information in API responses.
+
+Do not trust product prices, totals, stock values, roles, or payment status submitted by the frontend.
+
+# 13. TESTING
+
+Write tests for important functionality.
+
+Backend:
+
+* Registration and login.
+* Role-based access.
+* Product listing.
+* Store inventory.
+* Cart quantity validation.
+* Checkout price calculation.
+* Insufficient stock.
+* Concurrent stock updates.
+* Order cancellation.
+* Shop-owner permissions.
+* Payment verification logic.
+
+Frontend:
+
+* Login form validation.
+* Product search.
+* Add-to-cart interactions.
+* Quantity updates.
+* Checkout validation.
+* Mobile navigation.
+* 3D product selection.
+
+Provide instructions for running tests.
+
+# 14. DEPLOYMENT AND DOCUMENTATION
+
+Create:
+
+* README.md
+* Frontend setup instructions.
+* Backend setup instructions.
+* MySQL database setup.
+* Environment variable examples.
+* API documentation.
+* Database schema documentation.
+* Demo account setup instructions.
+* Test instructions.
+* Deployment guide.
+* Known limitations.
+* Future enhancement ideas.
+
+Include a .gitignore file.
+
+Provide an example .env file containing placeholders only, never real secrets.
+
+The frontend, backend, and database should be independently configurable.
+
+# 15. DEVELOPMENT WORKFLOW
+
+Build the project in stages, but make sure the final result forms one integrated application.
+
+Stage 1:
+
+* Initialize frontend and backend.
+* Set up MySQL.
+* Create the database entities.
+* Implement authentication.
+* Build the responsive homepage.
+
+Stage 2:
+
+* Implement supermarket listing.
+* Implement product catalogue and search.
+* Implement store-specific pricing and inventory.
+
+Stage 3:
+
+* Implement cart.
+* Implement checkout.
+* Implement order creation and status tracking.
+* Implement stock updates and validation.
+
+Stage 4:
+
+* Build the shop-owner dashboard.
+* Build the admin dashboard.
+* Enforce role-based permissions.
+
+Stage 5:
+
+* Build the 3D supermarket.
+* Add aisle navigation.
+* Add desktop and mobile controls.
+* Connect 3D product selection to the product catalogue and cart.
+
+Stage 6:
+
+* Add payment integration or clearly labelled demo payments.
+* Test responsive design.
+* Test security and business rules.
+* Fix integration errors.
+* Prepare deployment documentation.
+
+# 16. IMPORTANT IMPLEMENTATION RULES
+
+1. Generate actual working source code, not just descriptions or mockups.
+2. Do not implement buttons that do nothing.
+3. Connect forms to real backend endpoints.
+4. Connect product displays to database-backed APIs.
+5. Use the same product IDs and store IDs throughout the application.
+6. Use the same inventory records for the catalogue, 3D product selection, cart validation, and checkout.
+7. Do not simulate real-time inventory using unrelated hardcoded frontend arrays.
+8. Keep demo data separate from production data.
+9. Do not claim to have implemented payment, delivery tracking, or live supermarket integrations unless they genuinely work.
+10. Ensure the application can be run locally using the README instructions.
+11. Fix compilation errors, missing imports, broken routes, API mismatches, and database mapping issues.
+12. Optimize the 3D scene for mobile performance.
+13. Use clean, readable code and reusable components.
+14. Never place database passwords, JWT secrets, or payment secrets in source code.
+15. If a feature cannot be fully completed in one generation, explain what remains and continue from the existing codebase instead of replacing it with a fake implementation.
+
+# 17. EXPECTED FINAL DELIVERABLES
+
+Deliver a complete project containing:
+
+* React frontend source code.
+* Java Spring Boot backend source code.
+* MySQL database schema and sample-data initialization.
+* Functional customer shopping flow.
+* Interactive 3D supermarket.
+* Shop-owner dashboard.
+* Admin dashboard.
+* Authentication and authorization.
+* Product and inventory management.
+* Cart and checkout.
+* Order history and status management.
+* Responsive desktop and mobile layouts.
+* Automated tests for critical features.
+* README and setup instructions.
+* API documentation.
+* Deployment configuration or deployment instructions.
+
+# FINAL INSTRUCTION
+
+Begin by presenting the proposed project folder structure and implementation plan. Then implement Stage 1 with complete working code.
+
+After Stage 1, continue through the remaining stages in order. Preserve existing working code when adding new features.
+
+Before declaring the project complete, run the available build and test commands, fix the errors that can be reproduced, and clearly report which features are implemented, which require external configuration, and which remain incomplete.
+
+The final goal is a functional, demonstrable, responsive full-stack college project—not merely a visually attractive frontend.

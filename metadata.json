@@ -1,0 +1,8 @@
+{
+  "name": "NearMart 3D — Virtual Supermarket & Local Grocery Marketplace",
+  "description": "Interactive 3D virtual supermarket and local grocery marketplace with real-time inventory, store-specific pricing, and order fulfillment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
